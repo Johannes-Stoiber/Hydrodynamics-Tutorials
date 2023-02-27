@@ -2,7 +2,7 @@
  Code and Figures used for the Astrophysical Hydrodynamics Lecture at LMU
  
 # Description
-Every experiment consists of at least three files:
+Most experiments consist of at least three files:
 
 - setup\_\*.py: This file creates the initial condition file that was used for the experiment.
 - plot\_\*.py: This file creates .png files from the output of the simulation.
