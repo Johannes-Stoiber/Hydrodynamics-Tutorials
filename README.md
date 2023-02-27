@@ -1,6 +1,22 @@
 # Hydrodynamics-Tutorials
  Code and Figures used for the Astrophysical Hydrodynamics Lecture at LMU
  
+# Content
+Experiments as listed here: https://www.usm.uni-muenchen.de/~ildar/hydro_course/ws2223/index.html
+
+- Free-fall Collapse
+- Field lines
+- density estimates
+- riemann problem
+- evrard collapse
+- sound wave
+- blast wave
+- nozzle
+- conduction
+- viscosity
+- mhd
+- galaxy
+ 
 # Description
 Most experiments consist of at least three files:
 
