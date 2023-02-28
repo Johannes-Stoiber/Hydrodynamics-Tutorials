@@ -53,4 +53,5 @@ plt.xlim(2,2.2e3)
 plt.legend(title = f'a = {popt[0]:3.2}, n = {popt[1]:3.2}'  , loc = 'upper left')
 plt.title('Schmidt-Kennicutt Relation in Galaxy Simulation')
 
+plt.savefig('sk_relation.png', format = 'png')
 plt.show()
