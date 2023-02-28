@@ -18,6 +18,8 @@ Experiments as listed here: https://www.usm.uni-muenchen.de/~ildar/hydro_course/
 - <a href="https://github.com/Johannes-Stoiber/Hydrodynamics-Tutorials/tree/main/12-galaxy">galaxy<a>
  
 # Description
+Almost all codes use the package <a href="https://github.com/aragagnin/g3read">g3read by Antonio Ragagnin<a>
+
 Most experiments consist of at least three files:
 
 - setup\_\*.py: This file creates the initial condition file that was used for the experiment.
