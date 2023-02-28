@@ -4,18 +4,18 @@
 # Content
 Experiments as listed here: https://www.usm.uni-muenchen.de/~ildar/hydro_course/ws2223/index.html
 
-- <a href="https://github.com/Johannes-Stoiber/Hydrodynamics-Tutorials/tree/main/01-free-fall">Free-fall Collapse<a>
-- Field lines
-- density estimates
-- riemann problem
-- evrard collapse
-- sound wave
-- blast wave
-- nozzle
-- conduction
-- viscosity
-- mhd
-- galaxy
+- <a href="https://github.com/Johannes-Stoiber/Hydrodynamics-Tutorials/tree/main/01-free-fall">free-fall Collapse<a>
+- <a href="https://github.com/Johannes-Stoiber/Hydrodynamics-Tutorials/tree/main/02-generating-field-lines">field lines<a>
+- <a href="https://github.com/Johannes-Stoiber/Hydrodynamics-Tutorials/tree/main/03-density-estimates">density estimates<a>
+- <a href="https://github.com/Johannes-Stoiber/Hydrodynamics-Tutorials/tree/main/04-riemann-problem">riemann problem<a>
+- <a href="https://github.com/Johannes-Stoiber/Hydrodynamics-Tutorials/tree/main/05-evrard-collapse">evrard collapse<a>
+- <a href="https://github.com/Johannes-Stoiber/Hydrodynamics-Tutorials/tree/main/06-sound-wave">sound wave<a>
+- <a href="https://github.com/Johannes-Stoiber/Hydrodynamics-Tutorials/tree/main/07-blast">blast wave<a>
+- <a href="https://github.com/Johannes-Stoiber/Hydrodynamics-Tutorials/tree/main/08-nozzle">nozzle<a>
+- <a href="https://github.com/Johannes-Stoiber/Hydrodynamics-Tutorials/tree/main/09-conduction">conduction<a>
+- <a href="https://github.com/Johannes-Stoiber/Hydrodynamics-Tutorials/tree/main/10-viscosity">viscosity<a>
+- <a href="https://github.com/Johannes-Stoiber/Hydrodynamics-Tutorials/tree/main/11-mhd">mhd<a>
+- <a href="https://github.com/Johannes-Stoiber/Hydrodynamics-Tutorials/tree/main/12-galaxy">galaxy<a>
  
 # Description
 Most experiments consist of at least three files:
