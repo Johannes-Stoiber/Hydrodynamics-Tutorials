@@ -16,6 +16,7 @@ Experiments as listed here: https://www.usm.uni-muenchen.de/~ildar/hydro_course/
 - <a href="https://github.com/Johannes-Stoiber/Hydrodynamics-Tutorials/tree/main/10-viscosity">viscosity<a>
 - <a href="https://github.com/Johannes-Stoiber/Hydrodynamics-Tutorials/tree/main/11-mhd">mhd<a>
 - <a href="https://github.com/Johannes-Stoiber/Hydrodynamics-Tutorials/tree/main/12-galaxy">galaxy<a>
+- <a href="https://github.com/Johannes-Stoiber/Hydrodynamics-Tutorials/tree/main/E1-mergers">Extension: Spiral galaxy mergers<a>
  
 # Description
 Almost all codes use the package <a href="https://github.com/aragagnin/g3read">g3read by Antonio Ragagnin<a>
