@@ -5,7 +5,7 @@ import g3read as g3
 class Merger():
     "Class to analyse a galaxy merger edge on"
     
-    def __init__(self, data_filename, quants):
+    def __init__(self, data_filename='counter_050'):
         """
         Initialise arrays and variables.
         
@@ -80,14 +80,14 @@ class Merger():
     
         self.r_eff, c = self.effective_radius()
         
-    def plot(self,ellipse = True, r_eff = False, quants = False):
+    def plot(self,ellipse = True, r_eff = False, quants = False, colormap = 'coolwarm_r'):
         sort_ind = np.argsort(-self.pos_bar[:,0])
         self.pos_bar = self.pos_bar[sort_ind]
         self.vel_bar = self.vel_bar[sort_ind]
         
         fig= plt.figure(figsize = figsize1, dpi = 120) #figsize = (25,5)
         plt.scatter(self.pos_dm[:,1], self.pos_dm[:,2], marker = '.',s = .5, c = 'gray')
-        plt.scatter(self.pos_bar[:,1], self.pos_bar[:,2], marker = '.', c = self.vel_bar[:,0], s = .5, cmap = 'jet_r', vmin = -200, vmax = 200)
+        plt.scatter(self.pos_bar[:,1], self.pos_bar[:,2], marker = '.', c = -self.vel_bar[:,0], s = .5, cmap = colormap, vmin = -200, vmax = 200)
     
         cbar = plt.colorbar()
         cbar.set_label(r'$v_{los} [km/s]$')
@@ -181,7 +181,7 @@ class Merger():
         
         self.lambda_R = np.sum(lam_R_enum)/np.sum(lam_R_denom) 
     
-    def plot_both(self):
+    def plot_both(self, colormap = 'coolwarm_r'):
         """
         Plot the 2d l.o.s.-velocity and l.o.s.-velocity dispersion
         """
@@ -199,7 +199,7 @@ class Merger():
         #contours_vel = axes[0].contour(x_mesh, y_mesh, z, levels = [np.quantile(z,0.393)], colors='black')
         #axes[0].clabel(contours_vel, inline=True, fontsize=8)
         im_vel = axes[0].imshow(z, extent=[-self.semimajoraxis, self.semimajoraxis, -self.semiminoraxis, self.semiminoraxis], origin='lower',
-           cmap='jet_r', alpha=0.7, aspect="auto", vmin = np.quantile(z, 0.1), vmax = np.quantile(z,0.9))
+           cmap=colormap, alpha=0.7, aspect="auto", vmin = np.quantile(z, 0.1), vmax = np.quantile(z,0.9))
         cbar_chi = plt.colorbar(im_vel, ax = axes[0])
         
         axes[0].set_title(r"l.o.s. velocity [km/s]")
@@ -211,7 +211,7 @@ class Merger():
         #contours_sig = axes[1].contour(x_mesh, y_mesh, z2, levels = [np.quantile(z2,0.393)], colors='black')
         #axes[1].clabel(contours_sig, inline=True, fontsize=8)
         im_sig = axes[1].imshow(z2, extent=[-self.semimajoraxis, self.semimajoraxis, -self.semiminoraxis, self.semiminoraxis], origin='lower',
-           cmap='jet_r', alpha=0.7, aspect="auto", vmin = np.quantile(z2, 0.1), vmax = np.quantile(z2,0.9))
+           cmap=colormap, alpha=0.7, aspect="auto", vmin = np.quantile(z2, 0.1), vmax = np.quantile(z2,0.9))
         cbar_like = plt.colorbar(im_sig, ax = axes[1])
         axes[1].set_title("l.o.s. velocity dispersion [km/s]")
         axes[1].set_xlabel('y [kpc]')
@@ -219,7 +219,7 @@ class Merger():
         
         return axes
     
-    def plot_vel(self, ellipse = True, r_eff = False):
+    def plot_vel(self, ellipse = True, r_eff = False, colormap = 'coolwarm_r'):
         """
         Plot the 2d l.o.s.-velocity
         """
@@ -232,7 +232,7 @@ class Merger():
         x_mesh, y_mesh = np.meshgrid(x,y)
         
         im_vel = plt.imshow(z, extent=[-self.semimajoraxis, self.semimajoraxis, -self.semiminoraxis, self.semiminoraxis], origin='lower',
-           cmap='jet_r', alpha=0.7, aspect="auto", vmin = np.quantile(z, 0.1), vmax = np.quantile(z,0.9))
+           cmap=colormap, alpha=0.7, aspect="auto", vmin = np.quantile(z, 0.1), vmax = np.quantile(z,0.9))
         cbar = plt.colorbar(im_vel)
         cbar.set_label(r'$v_{los} [km/s]$')
         
@@ -260,7 +260,7 @@ class Merger():
         plt.show()
         return 0
     
-    def plot_sig(self, ellipse = True, r_eff = False):
+    def plot_sig(self, ellipse = True, r_eff = False, colormap = 'coolwarm_r'):
         """
         Plot the 2d l.o.s.-velocity dispersion
         """
@@ -273,7 +273,7 @@ class Merger():
         x_mesh, y_mesh = np.meshgrid(x,y)
         
         im_vel = plt.imshow(z, extent=[-self.semimajoraxis, self.semimajoraxis, -self.semiminoraxis, self.semiminoraxis], origin='lower',
-           cmap='jet_r', alpha=0.7, aspect="auto", vmin = np.quantile(z, 0.1), vmax = np.quantile(z,0.9))
+           cmap=colormap, alpha=0.7, aspect="auto", vmin = np.quantile(z, 0.1), vmax = np.quantile(z,0.9))
         cbar = plt.colorbar(im_vel)
         cbar.set_label(r'$\sigma_{los} [km/s]$')
         
