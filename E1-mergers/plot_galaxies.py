@@ -6,7 +6,7 @@ frames = np.linspace(0,51,52)
 #frames = np.linspace(0,0,1)
 
 for i in range(len(frames)):
-    filename = f'snaps_impact/impact_{int(frames[i]):03}'
+    filename = f'snaps_same/same_{int(frames[i]):03}'
     #filename = 'galaxies_impact.ic'
     ptype = [0,2,3]
     
@@ -23,7 +23,7 @@ for i in range(len(frames)):
     vel = vel[sort_ind]
 
     fig= plt.figure(figsize = (25,8), dpi = 250)
-    plt.scatter(pos_dm[:,1], pos_dm[:,2], marker = '.',s = .5, c = 'gray')
+    plt.scatter(pos_dm[:,1], pos_dm[:,2], marker = '.',s = .5, c = 'black')
     plt.scatter(pos[:,1], pos[:,2], marker = '.', c = -vel[:,0], s = .5, cmap = 'coolwarm_r', vmin = -200, vmax = 200)
     
     #plt.scatter(pos_dm[:,1], pos_dm[:,0], marker = '.',s = .5, c = 'gray')
@@ -42,5 +42,5 @@ for i in range(len(frames)):
     
     plt.title(f'merger at time = {time:.3f}')
     
-    plt.savefig(f'galaxies_impact/galaxies_impact_{int(frames[i]):03}.png', format = 'png', bbox_inches = 'tight')
+    plt.savefig(f'galaxies_same/galaxies_same_{int(frames[i]):03}.png', format = 'png', bbox_inches = 'tight')
     #plt.show()
