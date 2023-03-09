@@ -1,19 +1,11 @@
 import numpy as np
-import g3read as g3
 import matplotlib.pyplot as plt
-
-#quants = [0.005, 0.995]
-#quants = [0.025, 0.975]
-quants = [0.05, 0.95] 
-n = 70
-figsize1 = (8.5,5.3) 
-figsize2 = (18,6)
-figsize3 = (7.5,6)
+import g3read as g3
 
 class Merger():
     "Class to analyse a galaxy merger edge on"
     
-    def __init__(self, data_filename='counter_050'):
+    def __init__(self, data_filename, quants):
         """
         Initialise arrays and variables.
         
@@ -48,6 +40,8 @@ class Merger():
         self.y_min = np.quantile(self.pos_bar[:,2], quants[0])
         self.y_max = np.quantile(self.pos_bar[:,2], quants[1])
         
+        self.r_eff, c = self.effective_radius()
+        
         self.x = np.zeros(50)
         self.y = np.zeros(50)
         
@@ -81,7 +75,12 @@ class Merger():
         self.semimajoraxis = (np.abs(self.x_min)+np.abs(self.x_max))/2
         self.semiminoraxis = (np.abs(self.y_min)+np.abs(self.y_max))/2
         
-    def plot(self,show = "ellipse"):
+        self.eps = 1 - self.semiminoraxis/self.semimajoraxis
+        self.boundary = 0.31*np.sqrt(self.eps)
+    
+        self.r_eff, c = self.effective_radius()
+        
+    def plot(self,ellipse = True, r_eff = False, quants = False):
         sort_ind = np.argsort(-self.pos_bar[:,0])
         self.pos_bar = self.pos_bar[sort_ind]
         self.vel_bar = self.vel_bar[sort_ind]
@@ -105,18 +104,24 @@ class Merger():
     
         plt.title(f'merger at time = {self.time:.3f}')
         
-        if show == "ellipse":
+        if ellipse == True:
             a = self.semimajoraxis
             b = self.semiminoraxis
             t = np.linspace(0,2*np.pi,100)
             x = a*np.cos(t)
             y = b*np.sin(t)
             plt.plot(x,y, 'b-')
-        elif show == "quants":
+        if quants == True:
             plt.axhline(y = self.y_min, color = 'red')
             plt.axhline(y = self.y_max, color = 'red')
             plt.axvline(x = self.x_min, color = 'red')
             plt.axvline(x = self.x_max, color = 'red')
+        if r_eff == True:
+            r = self.r_eff
+            t = np.linspace(0,2*np.pi,100)
+            x = r*np.cos(t)
+            y = r*np.sin(t)
+            plt.plot(x,y, 'g-')
             
         plt.show()
         
@@ -214,7 +219,7 @@ class Merger():
         
         return axes
     
-    def plot_vel(self, show = 'ellipse'):
+    def plot_vel(self, ellipse = True, r_eff = False):
         """
         Plot the 2d l.o.s.-velocity
         """
@@ -238,18 +243,24 @@ class Merger():
         #plt.xlim(self.x_min, self.x_max)
         #plt.ylim(self.y_min, self.y_max)
         
-        if show == "ellipse":
+        if ellipse == True:
             a = self.semimajoraxis
             b = self.semiminoraxis
             t = np.linspace(0,2*np.pi,100)
             x = a*np.cos(t)
             y = b*np.sin(t)
             plt.plot(x,y, 'k-')
+        if r_eff == True:
+            r = self.r_eff
+            t = np.linspace(0,2*np.pi,100)
+            x = r*np.cos(t)
+            y = r*np.sin(t)
+            plt.plot(x,y, 'g-')
         
         plt.show()
         return 0
     
-    def plot_sig(self, show = 'ellipse'):
+    def plot_sig(self, ellipse = True, r_eff = False):
         """
         Plot the 2d l.o.s.-velocity dispersion
         """
@@ -273,26 +284,56 @@ class Merger():
         #plt.xlim(self.x_min, self.x_max)
         #plt.ylim(self.y_min, self.y_max)
         
-        if show == "ellipse":
+        if ellipse == True:
             a = self.semimajoraxis
             b = self.semiminoraxis
             t = np.linspace(0,2*np.pi,100)
             x = a*np.cos(t)
             y = b*np.sin(t)
             plt.plot(x,y, 'k-')
+        if r_eff == True:
+            r = self.r_eff
+            t = np.linspace(0,2*np.pi,100)
+            x = r*np.cos(t)
+            y = r*np.sin(t)
+            plt.plot(x,y, 'g-')
         
         plt.show()
         return 0
     
-def main(data_filename):
-    merger = Merger(data_filename = data_filename)
+    def effective_radius(self, max_steps = 100):
+        M_tot = np.sum(self.mass_bar)
+        r_eff = 1
+        r = np.sqrt(self.pos_bar[:,1]**2 + self.pos_bar[:,2]**2)
+        cond = np.where(r < r_eff)
+        M_half = np.sum(self.mass_bar[cond])
+        counter = 0
+        for i in range(max_steps):
+            if (np.abs(M_tot/2-M_half) > 0.1 ):
+                if M_tot/2 > M_half:
+                    r_eff += 0.1
+                elif M_tot/2 < M_half:
+                    r_eff -= 0.1
+                r = np.sqrt(self.pos_bar[:,0]**2 + self.pos_bar[:,1]**2 + self.pos_bar[:,2]**2)
+                cond = np.where(r < r_eff)
+                M_half = np.sum(self.mass_bar[cond])
+                counter += 1
+        return r_eff, counter
+
+    
+def main(data_filename, n, quants):
+    merger = Merger(data_filename, quants)
     merger.calc_com()
     merger.plot()
     merger.grid(n_x = n, n_y = n)
-    print("lambda_R = ", merger.lambda_R)
+    print("lambda_R = ", merger.lambda_R, " boundary = ", merger.boundary)
     merger.plot_vel()
     
-main('snaps_impact/impact_050')
-
-
-
+filename = 'snaps_perp/perp_050'
+n = 70
+quants = [0.05, 0.95]
+figsize1 = (8.5,5.3)
+figsize2 = (18,6)
+figsize3 = (7.5,6)
+    
+main(filename, n, quants)
