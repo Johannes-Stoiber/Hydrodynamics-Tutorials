@@ -24,7 +24,7 @@ for i in range(len(frames)):
 
     fig= plt.figure(figsize = (25,8), dpi = 250)
     plt.scatter(pos_dm[:,1], pos_dm[:,2], marker = '.',s = .5, c = 'gray')
-    plt.scatter(pos[:,1], pos[:,2], marker = '.', c = -vel[:,0], s = .5, cmap = 'jet_r', vmin = -200, vmax = 200)
+    plt.scatter(pos[:,1], pos[:,2], marker = '.', c = -vel[:,0], s = .5, cmap = 'coolwarm_r', vmin = -200, vmax = 200)
     
     #plt.scatter(pos_dm[:,1], pos_dm[:,0], marker = '.',s = .5, c = 'gray')
     #plt.scatter(pos[:,1], pos[:,0], marker = '.', c = vel[:,2], s = .5, cmap = 'jet_r', vmin = -200, vmax = 200)
