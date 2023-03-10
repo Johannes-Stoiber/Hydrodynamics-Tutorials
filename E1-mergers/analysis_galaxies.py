@@ -87,7 +87,7 @@ class Merger():
         
         fig= plt.figure(figsize = figsize1, dpi = 120) #figsize = (25,5)
         plt.scatter(self.pos_dm[:,1], self.pos_dm[:,2], marker = '.',s = .5, c = 'black')
-        plt.scatter(self.pos_bar[:,1], self.pos_bar[:,2], marker = '.', c = -self.vel_bar[:,0], s = .5, cmap = colormap, vmin = -200, vmax = 200)
+        plt.scatter(self.pos_bar[:,1], self.pos_bar[:,2], marker = '.', c = self.vel_bar[:,0], s = .5, cmap = colormap, vmin = -200, vmax = 200)
     
         cbar = plt.colorbar()
         cbar.set_label(r'$v_{los} [km/s]$')
@@ -319,6 +319,7 @@ class Merger():
                 M_half = np.sum(self.mass_bar[cond])
                 counter += 1
         return r_eff, counter
+
 
     
 def main(data_filename, n, quants):
