@@ -5,7 +5,7 @@ import g3read as g3
 class Merger():
     "Class to analyse a galaxy merger edge on"
     
-    def __init__(self, data_filename='counter_050'):
+    def __init__(self, data_filename, quants):
         """
         Initialise arrays and variables.
         
