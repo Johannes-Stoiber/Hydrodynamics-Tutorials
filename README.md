@@ -16,7 +16,8 @@ Experiments as listed here: https://www.usm.uni-muenchen.de/~ildar/hydro_course/
 - <a href="https://github.com/Johannes-Stoiber/Hydrodynamics-Tutorials/tree/main/10-viscosity">viscosity<a>
 - <a href="https://github.com/Johannes-Stoiber/Hydrodynamics-Tutorials/tree/main/11-mhd">mhd<a>
 - <a href="https://github.com/Johannes-Stoiber/Hydrodynamics-Tutorials/tree/main/12-galaxy">galaxy<a>
-- <a href="https://github.com/Johannes-Stoiber/Hydrodynamics-Tutorials/tree/main/E1-mergers">Extension: Spiral galaxy mergers<a>; <a href="https://cloud.physik.lmu.de/index.php/s/7GWxxwcZqCJ4ELk">gifs<a>
+- <a href="https://github.com/Johannes-Stoiber/Hydrodynamics-Tutorials/tree/main/E1-mergers">Extension 1: Spiral galaxy mergers<a>; <a href="https://cloud.physik.lmu.de/index.php/s/7GWxxwcZqCJ4ELk">gifs<a>
+- <a href="https://github.com/Johannes-Stoiber/Hydrodynamics-Tutorials/tree/main/E2-rotating-collpase">Extension 2: Rotating collapse<a>
 
 
  
